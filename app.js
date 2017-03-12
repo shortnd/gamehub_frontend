@@ -2,6 +2,7 @@
 
 angular
   .module("postTest", [
+    "ng-token-auth",
     "ngResource"
   ])
   .factory("PostFactory", [
