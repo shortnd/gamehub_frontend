@@ -19,11 +19,12 @@ angular
   ])
   .controller("PostNewController",[
     "PostFactory",
+    "$state",
     PostNewControllerFunction
   ])
   .controller("PostShowController",[
     "PostFactory",
-    "$state",
+    "$stateParams",
     PostShowControllerFunction
   ])
   .controller("PostEditController", [
@@ -42,10 +43,22 @@ function RouterFunction($stateProvider){
       controller: "PostIndexController",
       controllerAs: "vm"
     })
+    .state("postNew", {
+      url: "/posts/new",
+      templateUrl: "js/ng-views/new.html",
+      controller: "PostNewController",
+      controllerAs: "vm"
+    })
     .state("postShow",{
       url: "/posts/:id",
       templateUrl: "js/ng-views/show.html",
       controller: "PostShowController",
+      controllerAs: "vm"
+    })
+    .state("postEdit", {
+      url: "/posts/:id/edit",
+      templateUrl: "js/ng-views/edit.html",
+      controller: "PostEditController",
       controllerAs: "vm"
     })
 }
@@ -88,7 +101,7 @@ function PostEditControllerFunction(PostFactory, $stateParams, $state){
       id: $stateParams.id
     }, function(post){
         $state.go("postShow", {
-          id: entrie.id
+          id: post.id
         })
     })
   }
