@@ -38,13 +38,13 @@ function RouterFunction($stateProvider){
   $stateProvider
     .state("postIndex",{
       url: "/posts",
-      templateUrl: "index.html",
+      templateUrl: "js/ng-views/index.html",
       controller: "PostIndexController",
       controllerAs: "vm"
     })
     .state("postShow",{
       url: "/posts/:id",
-      templateUrl: "js/ng-views/index.html",
+      templateUrl: "js/ng-views/show.html",
       controller: "PostShowController",
       controllerAs: "vm"
     })
