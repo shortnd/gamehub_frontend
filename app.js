@@ -5,6 +5,10 @@ angular
     "ng-token-auth",
     "ngResource"
   ])
+  .config([
+    "$authProvider",
+    AuthFunction
+  ])
   .factory("PostFactory", [
     "$resource",
     PostFactoryFunction
@@ -13,6 +17,12 @@ angular
     "PostFactory",
     PostControllerFunction
   ])
+
+function AuthFunction($authProvider) {
+  $authProvider.configure({
+    apiUrl: "http://localhost:3000"
+  })
+}
 
 function PostFactoryFunction($resource) {
   return $resource("http://localhost:3000/posts/:id", {}, {
