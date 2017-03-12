@@ -37,14 +37,14 @@ angular
 function RouterFunction($stateProvider){
   $stateProvider
     .state("postIndex",{
-      url: "/",
+      url: "/posts",
       templateUrl: "index.html",
       controller: "PostIndexController",
       controllerAs: "vm"
     })
     .state("postShow",{
-      url: "/posts",
-      template: "js/ng-views/index.html",
+      url: "/posts/:id",
+      templateUrl: "js/ng-views/index.html",
       controller: "PostShowController",
       controllerAs: "vm"
     })
@@ -52,7 +52,9 @@ function RouterFunction($stateProvider){
 
 function PostFactoryFunction($resource) {
   return $resource("http://localhost:3000/posts/:id", {}, {
-    update: {method: "PUT"}
+    update: {
+      method: "PUT"
+    }
   })
 }
 
