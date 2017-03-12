@@ -40,7 +40,15 @@
     <div class="container">
 
       <main ng-repeat="post in vm.posts">
-        <p>{{post.content}}</p>
+        <div class="card">
+                    <div class="card-header">
+                        Username
+                    </div>
+                    <div class="card-block">
+                        <h4 class="card-title">Post Title</h4>
+                        <p class="card-text">{{post.content}}</p>
+                    </div>
+                </div>
       </main>
 
     <footer class="bg-inverse footer text-white">
