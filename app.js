@@ -33,14 +33,68 @@ angular
     PostEditControllerFunction
   ])
 
+
+function RouterFunction($stateProvider){
+  $stateProvider
+    .state("postIndex",{
+      url: "/",
+      templateUrl: "index.html",
+      controller: "PostIndexController",
+      controllerAs: "vm"
+    })
+    .state("postShow",{
+      url: "/posts",
+      template: "js/ng-views/index.html",
+      controller: "PostShowController",
+      controllerAs: "vm"
+    })
+}
+
 function PostFactoryFunction($resource) {
   return $resource("http://localhost:3000/posts/:id", {}, {
     update: {method: "PUT"}
   })
 }
 
-function PostControllerFunction(PostFactory) {
+function PostIndexControllerFunction(PostFactory){
   this.posts = PostFactory.query()
 }
 
-function
+function PostNewControllerFunction(PostFactory, $state){
+  this.post = new PostFactory()
+  this.create = function(){
+    this.post.$save(function(post){
+      $state.go("postShow",{
+        id: post.id
+      })
+    })
+  }
+}
+
+function PostShowControllerFunction(PostFactory, $stateParams){
+  this.post = PostFactory.get({
+    id: $stateParams.id
+  })
+}
+
+function PostEditControllerFunction(PostFactory, $stateParams, $state){
+  this.post = PostFactory.get({
+    id: $stateParams.id
+  })
+  this.update = function(){
+    this.post.$update({
+      id: $stateParams.id
+    }, function(post){
+        $state.go("postShow", {
+          id: entrie.id
+        })
+    })
+  }
+  this.destroy = function() {
+    this.post.$delete({
+      id: $stateParams.id
+    }), function(post){
+      $state.go("postIndex")
+    }
+  }
+}
