@@ -2,15 +2,35 @@
 
 angular
   .module("postTest", [
+    "ui.router",
     "ngResource"
+  ])
+  .config([
+    "$stateProvider",
+    RouterFunction
   ])
   .factory("PostFactory", [
     "$resource",
     PostFactoryFunction
   ])
-  .controller("PostController", [
+  .controller("PostIndexController",[
     "PostFactory",
-    PostControllerFunction
+    PostIndexControllerFunction
+  ])
+  .controller("PostNewController",[
+    "PostFactory",
+    PostNewControllerFunction
+  ])
+  .controller("PostShowController",[
+    "PostFactory",
+    "$state",
+    PostShowControllerFunction
+  ])
+  .controller("PostEditController", [
+    "PostFactory",
+    "$stateParams",
+    "$state",
+    PostEditControllerFunction
   ])
 
 function PostFactoryFunction($resource) {
@@ -22,3 +42,5 @@ function PostFactoryFunction($resource) {
 function PostControllerFunction(PostFactory) {
   this.posts = PostFactory.query()
 }
+
+function
