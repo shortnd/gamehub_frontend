@@ -1,39 +1,24 @@
+"use strict";
+
 angular
-  .module("gamehub",[
-    "ui.router",
+  .module("postTest", [
     "ngResource"
   ])
-  .config([
-    "$stateProvider",
-    RouterFunction
-  ])
-  .factory("GameFactory",[
+  .factory("PostFactory", [
     "$resource",
-    GameFactoryFunction
+    PostFactoryFunction
   ])
-  .controller("GameIndexController", [
-    "GameFactory",
-    GameIndexControllerFunction
-  ])
-  .controller("GameShowController", [
-    "GameFactory",
-    GameShowControllerFunction
+  .controller("PostController", [
+    "PostFactory",
+    PostControllerFunction
   ])
 
-  function RouterFunction($stateProvider) {
-    $stateProvider
-      .state("gameIndex", {
-        url: "/posts",
-        templateUrl:"js/ng-views/index.html",
-        controller: "GameIndexController",
-        controllerAs: "vm"
-      })
-  }
+function PostFactoryFunction($resource) {
+  return $resource("http://localhost:3000/posts/:id", {}, {
+    update: {method: "PUT"}
+  })
+}
 
-  function GameFactoryFunction($resource) {
-    return $resource("http://localhost:3000/posts")
-  }
-
-  function GameIndexControllerFunction(GameFactory) {
-    this.posts = GameFactory.query()
-  }
+function PostControllerFunction(PostFactory) {
+  this.posts = PostFactory.query()
+}
