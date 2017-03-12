@@ -1,6 +1,6 @@
 body > .container {
   padding-top: 60px;
-  padding-bottom: 60px;
+  /*padding-bottom: 60px;*/
 }
 .carousel-item > img {
   width: 100%;
@@ -22,4 +22,10 @@ footer {
 h1 {
   text-align: center;
   font-size: 4em;
+}
+.card {
+  margin: 15px;
+}
+.d-flex > .btn {
+  border: 1px solid black;
 }
