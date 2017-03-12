@@ -47,10 +47,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md">
+            <div class="col-md" data-ng-repeat="post in vm.posts">
                 <div class="card">
                     <div class="card-header">
                         Write your post
+                        {{vm.post.content}}
                     </div>
                     <div class="card-block">
                         <form>
@@ -59,64 +60,6 @@
                                 <button class="btn btn-primary float-right" style="margin: 4px 0;" type="submit" name="button">Submit</button>
                             </div>
                         </form>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        User Name
-                    </div>
-                    <div class="card-block">
-                        <h4 class="card-title">Post Title</h4>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        User Name
-                    </div>
-                    <div class="card-block">
-                        <h4 class="card-title">Post Title</h4>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        User Name
-                    </div>
-                    <div class="card-block">
-                        <h4 class="card-title">Post Title</h4>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        User Name
-                    </div>
-                    <div class="card-block">
-                        <h4 class="card-title">Post Title</h4>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        User Name
-                    </div>
-                    <div class="card-block">
-                        <h4 class="card-title">Post Title</h4>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        User Name
-                    </div>
-                    <div class="card-block">
-                        <h4 class="card-title">Post Title</h4>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                     </div>
                 </div>
 
