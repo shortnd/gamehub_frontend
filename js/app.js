@@ -19,6 +19,10 @@ angular
     "$resource",
     PostFactoryFunction
   ])
+  .controller('LoginController', [
+    "$auth",
+    LoginControllerFunction
+  ])
   .controller("PostIndexController", [
     "PostFactory",
     PostIndexControllerFunction
@@ -26,12 +30,32 @@ angular
 
 function RouterFunction($stateProvider) {
   $stateProvider
+  .state("login", {
+    url: "/login",
+    templateUrl: "js/ng-views/login.html",
+    controller: "LoginController",
+    controllerAs: "vm"
+  })
   .state("postIndex", {
     url: "/posts",
     templateUrl: "js/ng-views/index.html",
     controller: "PostIndexController",
     controllerAs: "vm"
   })
+}
+
+function LoginControllerFunction($auth) {
+  this.login = function() {
+    $auth.submitLogin(this.loginForm)
+    .then(resp => {
+      console.log("Login successful!")
+      console.log(resp)
+    })
+    .catch(resp => {
+      console.log("Login failed!")
+      console.log(resp)
+    })
+  }
 }
 
 function PostFactoryFunction($resource) {
