@@ -19,9 +19,13 @@ angular
     "$resource",
     PostFactoryFunction
   ])
-  .controller('LoginController', [
+  .controller("LoginController", [
     "$auth",
     LoginControllerFunction
+  ])
+  .controller("SignOutController", [
+    "$auth",
+    SignOutControllerFunction
   ])
   .controller("PostIndexController", [
     "PostFactory",
@@ -34,6 +38,12 @@ function RouterFunction($stateProvider) {
     url: "/login",
     templateUrl: "js/ng-views/login.html",
     controller: "LoginController",
+    controllerAs: "vm"
+  })
+  .state("signOut", {
+    url: "/sign-out",
+    templateUrl: "js/ng-views/sign-out.html",
+    controller: "SignOutController",
     controllerAs: "vm"
   })
   .state("postIndex", {
@@ -49,10 +59,23 @@ function LoginControllerFunction($auth) {
     $auth.submitLogin(this.loginForm)
     .then(resp => {
       console.log("Login successful!")
-      console.log(resp)
     })
     .catch(resp => {
       console.log("Login failed!")
+    })
+  }
+  this.logCurrentUser = function() {
+    console.log($auth.validateUser().$$state.value)
+  }
+}
+
+function SignOutControllerFunction($auth) {
+  this.signOut = function() {
+    $auth.signOut()
+    .then(resp => {
+      console.log(resp)
+    })
+    .catch(resp => {
       console.log(resp)
     })
   }
