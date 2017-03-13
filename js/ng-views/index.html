@@ -1,5 +1,5 @@
 <div ng-repeat="post in vm.posts">
-{{post.user}}
+<a data-ui-sref="postShow({id: post.id})">{{post.user}}</a>
 <br>
 {{post.content}}
 </div>

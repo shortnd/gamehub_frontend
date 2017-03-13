@@ -1,0 +1,12 @@
+<h2>Edit Post</h2>
+
+<form>
+  <div class="form-group">
+    <label>User: <input data-ng-model="vm.post.user"></label>
+  </div>
+  <div class="form-group">
+    <label>Content:<textarea data-ng-model="vm.post.content"></textarea></label>
+  </div>
+  <button type="button" data-ng-click="vm.update()">Update</button>
+  <button type="button" data-ng-click="vm.destroy()">Delete</button>
+</form>
