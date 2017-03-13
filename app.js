@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 angular
     .module("postTest", [
@@ -13,6 +13,11 @@ angular
         "$resource",
         PostFactoryFunction
     ])
+    .factory("CommentFactory", function($resource){
+      return $resource ("http://localhost:3000/posts/:post_id/comments/:id", {}, {
+        update: { method: "PUT"}
+      })
+    })
     .controller("PostIndexController", [
         "PostFactory",
         PostIndexControllerFunction
@@ -24,6 +29,7 @@ angular
     ])
     .controller("PostShowController", [
         "PostFactory",
+        "CommentFactory",
         "$stateParams",
         PostShowControllerFunction
     ])
@@ -71,6 +77,14 @@ function PostFactoryFunction($resource) {
     })
 }
 
+// function CommentFactoryFunction($resource){
+//     return $resource("http://localhost:3000/posts/:id/comments", {}, {
+//         update: {
+//           method: "PUT"
+//         }
+//     })
+// }
+
 function PostIndexControllerFunction(PostFactory) {
     this.posts = PostFactory.query()
 }
@@ -86,10 +100,11 @@ function PostNewControllerFunction(PostFactory, $state) {
     }
 }
 
-function PostShowControllerFunction(PostFactory, $stateParams) {
+function PostShowControllerFunction(PostFactory, CommentFactory, $stateParams) {
     this.post = PostFactory.get({
         id: $stateParams.id
     })
+    this.comments = CommentFactory.query({ post_id: $stateParams.id })
 }
 
 

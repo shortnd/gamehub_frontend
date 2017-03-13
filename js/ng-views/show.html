@@ -1,3 +1,7 @@
 <h2>this is show</h2>
 
 <h3>{{vm.post.content}}</h3>
+
+<div data-ng-repeat="comment in vm.comments">
+  <p>{{comment.content}}</p>
+</div>
