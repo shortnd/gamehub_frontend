@@ -108,9 +108,9 @@ function PostEditControllerFunction(PostFactory, $stateParams, $state) {
     }
     this.destroy = function() {
         this.post.$delete({
-                id: $stateParams.id
-            }, function(post) {
-                $state.go("postIndex")
-            })
+            id: $stateParams.id
+        }, function(post) {
+            $state.go("postIndex")
+        })
     }
 }
