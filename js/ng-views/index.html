@@ -24,9 +24,9 @@
                     </div>
                     <div class="card-block">
                         <form>
-                            <div class="form-group">
-                                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-                                <button class="btn btn-primary float-right" style="margin: 4px 0;" type="submit" name="button">Submit</button>
+                            <div class="form-group" data-ng-controller="PostNewController">
+                                <textarea class="form-control" rows="3"></textarea>
+                                <button class="btn btn-primary float-right" style="margin: 4px 0;" type="button" name="button" >Submit</button>
                             </div>
                         </form>
                     </div>
@@ -34,10 +34,10 @@
                 <div class="card" data-ng-repeat="post in vm.posts">
                     <div class="card-header">
                         User Name
+                        <a class="float-right" data-ui-sref="postShow({id: post.id})">Show</a>
                     </div>
                     <div class="card-block">
                         <h4 class="card-title">Post Title</h4>
-                        <p class="card-title float-right"><a data-ui-sref="postShow({id: post.id})">Show</a></p>
                         <p class="card-text">{{post.content}}</p>
                     </div>
                 </div>

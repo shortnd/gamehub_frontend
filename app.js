@@ -77,15 +77,7 @@ function PostFactoryFunction($resource) {
     })
 }
 
-// function CommentFactoryFunction($resource){
-//     return $resource("http://localhost:3000/posts/:id/comments", {}, {
-//         update: {
-//           method: "PUT"
-//         }
-//     })
-// }
-
-function PostIndexControllerFunction(PostFactory, CommentFactory) {
+function PostIndexControllerFunction(PostFactory) {
     this.posts = PostFactory.query()
 }
 
@@ -99,6 +91,15 @@ function PostNewControllerFunction(PostFactory, $state) {
         })
     }
 }
+
+// function CommentNewControllerFunction(CommentFactory,$route) {
+//   this.comment = new CommentFactory()
+//   this.create = function() {
+//     this.comment.$save(function(comment){
+//       $route.reload()
+//     })
+//   }
+// }
 
 function PostShowControllerFunction(PostFactory, CommentFactory, $stateParams) {
     this.post = PostFactory.get({
