@@ -41,6 +41,18 @@ angular
         "$state",
         PostEditControllerFunction
     ])
+    .controller("CommentNewController", [
+        "CommentFactory",
+        "$stateParams",
+        "$state",
+        CommentNewControllerFunction
+    ])
+    .controller("CommentEditController", [
+        "CommentFactory",
+        "$stateParams",
+        "$state",
+        CommentEditControllerFunction
+    ])
 
 
 function RouterFunction($stateProvider) {
@@ -53,20 +65,32 @@ function RouterFunction($stateProvider) {
         })
         .state("postNew", {
             url: "/posts/new",
-            templateUrl: "js/ng-views/new.html",
+            templateUrl: "js/ng-views/posts/new.html",
             controller: "PostNewController",
             controllerAs: "vm"
         })
         .state("postShow", {
             url: "/posts/:id",
-            templateUrl: "js/ng-views/show.html",
+            templateUrl: "js/ng-views/posts/show.html",
             controller: "PostShowController",
             controllerAs: "vm"
         })
         .state("postEdit", {
             url: "/posts/:id/edit",
-            templateUrl: "js/ng-views/edit.html",
+            templateUrl: "js/ng-views/posts/edit.html",
             controller: "PostEditController",
+            controllerAs: "vm"
+        })
+        .state("commentNew", {
+            url: "/posts/:post_id/comment/new",
+            templateUrl: "js/ng-views/comments/new.html",
+            controller: "CommentNewController",
+            controllerAs: "vm"
+        })
+        .state("commentEdit", {
+            url: "/posts/:post_id/comments/:id/edit",
+            templateUrl: "js/ng-views/comments/edit.html",
+            controller: "CommentEditController",
             controllerAs: "vm"
         })
 }
@@ -98,21 +122,13 @@ function PostNewControllerFunction(PostFactory, $state) {
 function CommentNewControllerFunction(PostFactory, CommentFactory, $stateParams) {
     this.comment = new CommentFactory()
     this.createComment = function() {
-      this.comment.$save(function(comment){
-        CommentFactory.query({
-          post_id: $stateParams.id
+        this.comment.$save(function(comment) {
+            CommentFactory.query({
+                post_id: $stateParams.id
+            })
         })
-      })
     }
 }
-// function CommentNewControllerFunction(CommentFactory,$route) {
-//   this.comment = new CommentFactory()
-//   this.create = function() {
-//     this.comment.$save(function(comment){
-//       $route.reload()
-//     })
-//   }
-// }
 
 function PostShowControllerFunction(PostFactory, CommentFactory, $stateParams) {
     this.post = PostFactory.get({
@@ -142,6 +158,49 @@ function PostEditControllerFunction(PostFactory, $stateParams, $state) {
             id: $stateParams.id
         }, function(post) {
             $state.go("postIndex")
+        })
+    }
+}
+
+function CommentNewControllerFunction(CommentFactory, $stateParams, $state) {
+    this.comment = new CommentFactory()
+    this.create = function() {
+        this.comment.post_id = $stateParams.post_id
+        this.comment.$save({
+                post_id: $stateParams.post_id
+            },
+            function(post) {
+                $state.go("postShow", {
+                    id: $stateParams.post_id
+                })
+            })
+    }
+}
+
+function CommentEditControllerFunction(CommentFactory, $stateParams, $state) {
+    this.comment = CommentFactory.get({
+        post_id: $stateParams.post_id,
+        id: $stateParams.id
+    })
+    this.update = function() {
+        this.comment.$update({
+                post_id: $stateParams.post_id,
+                id: $stateParams.id
+            },
+            function(comment) {
+                $state.go("postShow", {
+                    id: comment.post_id
+                })
+            })
+    }
+    this.destroy = function() {
+        this.comment.$delete({
+            post_id: $stateParams.post_id,
+            id: $stateParams.id
+        }, function(comment) {
+            $state.go("postShow", {
+                id: $stateParams.post_id
+            })
         })
     }
 }

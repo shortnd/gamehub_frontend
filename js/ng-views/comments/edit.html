@@ -1,0 +1,16 @@
+edit
+<div class="card">
+    <div class="card-header">
+        Edit your comment
+    </div>
+    <div class="card-block">
+        <form>
+            <div class="form-group">
+                <label>Content:</label>
+                <textarea class="form-control" rows="3" data-ng-model="vm.comment.content"></textarea>
+                <button class="btn btn-primary float-right" style="margin: 4px 4px;" type="button" data-ng-click="vm.update()">Update</button>
+                <button class="btn btn-warning float-right" style="margin: 4px 0;" type="button" data-ng-click="vm.destroy()">Delete</button>
+            </div>
+        </form>
+    </div>
+</div>
