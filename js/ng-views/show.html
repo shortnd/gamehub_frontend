@@ -9,10 +9,24 @@
 </div>
 
 <div ng-repeat="comment in vm.comments" class="card float-right" style="width: 75%;">
-  <div class="card-header">
-    Commenter Name
-  </div>
-  <div class="card-block">
-    <p class="card-text">{{comment.content}}</p>
-  </div>
+    <div class="card-header">
+        Commenter Name
+    </div>
+    <div class="card-block">
+        <p class="card-text">{{comment.content}}</p>
+    </div>
+</div>
+
+<div class="card float-right" style="width: 75%;">
+    <div class="card-header">
+        New Comment
+    </div>
+    <div class="card-block">
+        <form>
+            <div class="form-group">
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <button class="btn btn-primary float-right">Submit</button>
+        </form>
+    </div>
 </div>
