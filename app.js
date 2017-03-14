@@ -85,7 +85,7 @@ function PostFactoryFunction($resource) {
 //     })
 // }
 
-function PostIndexControllerFunction(PostFactory) {
+function PostIndexControllerFunction(PostFactory, CommentFactory) {
     this.posts = PostFactory.query()
 }
 
