@@ -22,7 +22,15 @@
                 <div class="card" data-ng-repeat="post in vm.posts">
                     <div class="card-header">
                         User Name
-                        <a class="float-right" data-ui-sref="postShow({id: post.id})">Show</a>
+                        <ul style="list-style: none; background: #F7F7F9;" class="float-right">
+                          <li class="dropdown" style="background: #F7F7F9;">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" data-ui-sref="postShow({id: post.id})"> Show </a>
+                              <a class="dropdown-item" data-ui-sref="postEdit({id: post.id})"> Edit </a>
+                            </div>
+                          </li>
+                        </ul>
                     </div>
                     <div class="card-block">
                         <h4 class="card-title">Post Title</h4>

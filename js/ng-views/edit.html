@@ -1,9 +1,24 @@
-<h2>Edit Post</h2>
+<div class="card">
+    <div class="card-header">
+        Edit your post
+    </div>
+    <div class="card-block">
+        <form>
+            <div class="form-group" >
+                <label>Content:</label>
+                <textarea class="form-control" rows="3" data-ng-model="vm.post.content"></textarea>
+                <button class="btn btn-primary float-right" style="margin: 4px 4px;" type="button" data-ng-click="vm.update({id: post.id})" >Update</button>
+                <button class="btn btn-warning float-right" style="margin: 4px 0;" type="button" data-ng-click="vm.destroy({id: post.id})">Delete</button>
+            </div>
+        </form>
+    </div>
+</div>
 
-<form>
+
+<!-- <form>
   <div class="form-group">
     <label>Content:<textarea data-ng-model="vm.post.content"></textarea></label>
   </div>
   <button type="button" data-ng-click="vm.update()">Update</button>
   <button type="button" data-ng-click="vm.destroy()">Delete</button>
-</form>
+</form> -->

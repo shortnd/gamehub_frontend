@@ -1,8 +1,18 @@
-<h2>this is show</h2>
-
-<h3>{{vm.post.content}}</h3>
-
-<div data-ng-repeat="comment in vm.comments">
-    <p>{{comment.content}}</p>
+<div class="card">
+    <div class="card-header">
+        User Name
+    </div>
+    <div class="card-block">
+        <h4 class="card-title">Post Title</h4>
+        <p class="card-text">{{vm.post.content}}</p>
+    </div>
 </div>
-<a data-ui-sref="({commentNew})">New Comment</a>
+
+<div ng-repeat="comment in vm.comments" class="card float-right" style="width: 75%;">
+  <div class="card-header">
+    Commenter Name
+  </div>
+  <div class="card-block">
+    <p class="card-text">{{comment.content}}</p>
+  </div>
+</div>

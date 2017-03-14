@@ -37,6 +37,7 @@
                 <a class="dropdown-item" href="#">Forgot Username</a>
                 <a class="dropdown-item" href="#">Forgot Password</a>
             </div>
+        </li>
     </ul>
     <!-- this page loaded -->
     <!-- <a data-ui-sref="postIndex">Posts</a> -->
@@ -73,29 +74,31 @@
                 <form>
                     <div class="form-group">
                         <label for="inputUsername">Username</label>
-                        <input type="text" id="inputUsername" class="form-control" placeholder="Username" required>
+                        <input type="text" id="inputUsername" class="form-control" placeholder="Username" required readonly>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail">Email address</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" required readonly>
                         <small id="emailHelp" class="form-text text-muted">We will not share your email address with anyone else</small>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" required>
+                        <input type="password" class="form-control" id="inputPassword" required readonly>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
         </div>
+        <p class="showbtn"><a class="btn btn-primary" data-ui-sref="postIndex">Show Posts</a></p>
     </div>
 </div>
-</main>
+<!-- </main> -->
 <footer class="bg-inverse fixed-bottom footer text-white">
         Created by Students at GA
         <br>
         <a href="#">Contact Us</a>
-    </footer>
+</footer>
+</main>
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
