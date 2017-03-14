@@ -19,13 +19,9 @@ angular
     "$resource",
     PostFactoryFunction
   ])
-  .controller("LoginController", [
+  .controller("AuthController", [
     "$auth",
-    LoginControllerFunction
-  ])
-  .controller("SignOutController", [
-    "$auth",
-    SignOutControllerFunction
+    AuthControllerFunction
   ])
   .controller("PostIndexController", [
     "PostFactory",
@@ -34,16 +30,10 @@ angular
 
 function RouterFunction($stateProvider) {
   $stateProvider
-  .state("login", {
-    url: "/login",
-    templateUrl: "js/ng-views/login.html",
-    controller: "LoginController",
-    controllerAs: "vm"
-  })
-  .state("signOut", {
-    url: "/sign-out",
-    templateUrl: "js/ng-views/sign-out.html",
-    controller: "SignOutController",
+  .state("auth", {
+    url: "/auth",
+    templateUrl: "js/ng-views/auth.html",
+    controller: "AuthController",
     controllerAs: "vm"
   })
   .state("postIndex", {
@@ -54,29 +44,29 @@ function RouterFunction($stateProvider) {
   })
 }
 
-function LoginControllerFunction($auth) {
+function AuthControllerFunction($auth) {
+  this.getCurrentUser = function() {
+    let currentUser = $auth.validateUser().$$state.value
+    if (currentUser !== undefined) {
+      return currentUser
+    }
+  }
   this.login = function() {
     $auth.submitLogin(this.loginForm)
     .then(resp => {
-      console.log("Login successful!")
+      console.log("You signed in successfully!")
     })
     .catch(resp => {
-      console.log("Login failed!")
+      console.log("You did not sign in successfully. :(")
     })
   }
-  this.logCurrentUser = function() {
-    console.log($auth.validateUser().$$state.value)
-  }
-}
-
-function SignOutControllerFunction($auth) {
   this.signOut = function() {
     $auth.signOut()
     .then(resp => {
-      console.log(resp)
+      console.log("You signed out successfully!")
     })
     .catch(resp => {
-      console.log(resp)
+      console.log("You did not sign out successfully. :(")
     })
   }
 }
