@@ -51,6 +51,15 @@ function AuthControllerFunction($auth) {
       return currentUser
     }
   }
+  this.signUp = function() {
+    $auth.submitRegistration(this.signUpForm)
+    .then(resp => {
+      console.log("You signed in successfully!")
+    })
+    .catch(resp => {
+      console.log("You did not sign in successfully. :(")
+    })
+  }
   this.signIn = function() {
     $auth.submitLogin(this.signInForm)
     .then(resp => {
