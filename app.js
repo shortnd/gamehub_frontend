@@ -13,10 +13,12 @@ angular
         "$resource",
         PostFactoryFunction
     ])
-    .factory("CommentFactory", function($resource){
-      return $resource ("http://localhost:3000/posts/:post_id/comments/:id", {}, {
-        update: { method: "PUT"}
-      })
+    .factory("CommentFactory", function($resource) {
+        return $resource("http://localhost:3000/posts/:post_id/comments/:id", {}, {
+            update: {
+                method: "PUT"
+            }
+        })
     })
     .controller("PostIndexController", [
         "PostFactory",
@@ -105,7 +107,9 @@ function PostShowControllerFunction(PostFactory, CommentFactory, $stateParams) {
     this.post = PostFactory.get({
         id: $stateParams.id
     })
-    this.comments = CommentFactory.query({ post_id: $stateParams.id })
+    this.comments = CommentFactory.query({
+        post_id: $stateParams.id
+    })
 }
 
 

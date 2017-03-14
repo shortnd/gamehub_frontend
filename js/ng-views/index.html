@@ -5,9 +5,9 @@
 
 
 <div class="container">
-  <a class="btn btn-primary" data-ui-sref="postNew">New Post</a>
-        <div class="row">
-            <!-- <div class="col-md-3">
+    <a class="btn btn-primary" data-ui-sref="postNew">New Post</a>
+    <div class="row">
+        <!-- <div class="col-md-3">
                 <div class="card">
                     <img class="card-img-top img-thumbnail" src="img/night-gaming.jpg" alt="">
                     <div class="card-block">
@@ -19,27 +19,27 @@
                 </div>
             </div> -->
 
-            <div class="col-md">
+        <div class="col-md">
 
-                <div class="card" data-ng-repeat="post in vm.posts">
-                    <div class="card-header">
-                        User Name
-                        <ul style="list-style: none; background: #F7F7F9;" class="float-right">
-                          <li class="dropdown" style="background: #F7F7F9;">
+            <div class="card" data-ng-repeat="post in vm.posts">
+                <div class="card-header">
+                    User Name
+                    <ul style="list-style: none; background: #F7F7F9;" class="float-right">
+                        <li class="dropdown" style="background: #F7F7F9;">
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                             <div class="dropdown-menu">
-                              <a class="dropdown-item" data-ui-sref="postShow({id: post.id})"> Show </a>
-                              <a class="dropdown-item" data-ui-sref="postEdit({id: post.id})"> Edit </a>
+                                <a class="dropdown-item" data-ui-sref="postShow({id: post.id})"> Show </a>
+                                <a class="dropdown-item" data-ui-sref="postEdit({id: post.id})"> Edit </a>
                             </div>
-                          </li>
-                        </ul>
-                    </div>
-                    <div class="card-block">
-                        <h4 class="card-title">Post Title</h4>
-                        <p class="card-text">{{post.content}}</p>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
-                <!-- <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">Post Title</h4>
+                    <p class="card-text">{{post.content}}</p>
+                </div>
+            </div>
+            <!-- <div class="card">
                     <div class="card-header">
                         User Name
                     </div>
@@ -49,6 +49,6 @@
                     </div>
                 </div> -->
 
-            </div>
         </div>
     </div>
+</div>
