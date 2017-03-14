@@ -51,8 +51,8 @@ function AuthControllerFunction($auth) {
       return currentUser
     }
   }
-  this.login = function() {
-    $auth.submitLogin(this.loginForm)
+  this.signIn = function() {
+    $auth.submitLogin(this.signInForm)
     .then(resp => {
       console.log("You signed in successfully!")
     })

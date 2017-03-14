@@ -1,8 +1,8 @@
 <p>Current User: {{vm.getCurrentUser().email}}</p>
 
-<form ng-submit="vm.login(loginForm)" role="form" ng-init="loginForm = {}">
-  <p><input type="email" placeholder="Email" ng-model="vm.loginForm.email" required></p>
-  <p><input type="password" placeholder="Password" ng-model="vm.loginForm.password" required></p>
+<form ng-submit="vm.signIn(signInForm)" role="form" ng-init="signInForm = {}">
+  <p><input type="email" placeholder="Email" ng-model="vm.signInForm.email" required></p>
+  <p><input type="password" placeholder="Password" ng-model="vm.signInForm.password" required></p>
   <p><button type="submit">Sign In</button></p>
 </form>
 
