@@ -94,6 +94,17 @@ function PostNewControllerFunction(PostFactory, $state) {
     }
 }
 
+
+function CommentNewControllerFunction(PostFactory, CommentFactory, $stateParams) {
+    this.comment = new CommentFactory()
+    this.createComment = function() {
+      this.comment.$save(function(comment){
+        CommentFactory.query({
+          post_id: $stateParams.id
+        })
+      })
+    }
+}
 // function CommentNewControllerFunction(CommentFactory,$route) {
 //   this.comment = new CommentFactory()
 //   this.create = function() {
