@@ -15,6 +15,10 @@ angular
     "$stateProvider",
     RouterFunction
   ])
+  .factory("UserFactory", [
+    "$resource",
+    UserFactoryFunction
+  ])
   .factory("PostFactory", [
     "$resource",
     PostFactoryFunction
@@ -22,6 +26,10 @@ angular
   .controller("AuthController", [
     "$auth",
     AuthControllerFunction
+  ])
+  .controller("UserIndexController", [
+    "UserFactory",
+    UserIndexControllerFunction
   ])
   .controller("PostIndexController", [
     "PostFactory",
@@ -34,6 +42,12 @@ function RouterFunction($stateProvider) {
     url: "/auth",
     templateUrl: "js/ng-views/auth.html",
     controller: "AuthController",
+    controllerAs: "vm"
+  })
+  .state("userIndex", {
+    url: "/users",
+    templateUrl: "js/ng-views/users.html",
+    controller: "UserIndexController",
     controllerAs: "vm"
   })
   .state("postIndex", {
@@ -80,10 +94,19 @@ function AuthControllerFunction($auth) {
   }
 }
 
+function UserFactoryFunction($resource) {
+  return $resource("http://localhost:3000/users/:id", {}, {
+  })
+}
+
 function PostFactoryFunction($resource) {
   return $resource("http://localhost:3000/posts/:id", {}, {
     update: {method: "PUT"}
   })
+}
+
+function UserIndexControllerFunction(UserFactory) {
+  this.users = UserFactory.query()
 }
 
 function PostIndexControllerFunction(PostFactory) {
