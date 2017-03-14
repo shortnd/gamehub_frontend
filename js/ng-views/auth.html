@@ -1,9 +1,8 @@
-<p>Current User: {{vm.getCurrentUser().email}}</p>
-
-<form ng-submit="vm.signIn(signInForm)" role="form" ng-init="signInForm = {}">
+<form ng-hide="vm.getCurrentUser().signedIn" ng-submit="vm.signIn(signInForm)">
   <p><input type="email" placeholder="Email" ng-model="vm.signInForm.email" required></p>
   <p><input type="password" placeholder="Password" ng-model="vm.signInForm.password" required></p>
   <p><button type="submit">Sign In</button></p>
 </form>
 
-<button ng-click="vm.signOut()">Sign out</button>
+<p ng-show="vm.getCurrentUser().signedIn">Current User: {{vm.getCurrentUser().email}}</p>
+<button ng-show="vm.getCurrentUser().signedIn" ng-click="vm.signOut()">Sign out</button>
