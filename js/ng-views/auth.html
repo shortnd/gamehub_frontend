@@ -4,5 +4,7 @@
   <p><button type="submit">Sign In</button></p>
 </form>
 
-<p ng-show="vm.getCurrentUser().signedIn">Current User: {{vm.getCurrentUser().email}}</p>
-<button ng-show="vm.getCurrentUser().signedIn" ng-click="vm.signOut()">Sign out</button>
+<div ng-show="vm.getCurrentUser().signedIn">
+  <p>Current User: {{vm.getCurrentUser().email}}</p>
+  <button ng-click="vm.signOut()">Sign out</button>
+</div>
