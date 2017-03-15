@@ -1,0 +1,21 @@
+<div ng-hide="vm.getCurrentUser().signedIn">
+  <h3>Sign In</h3>
+  <form ng-submit="vm.signIn(signInForm)" role="form" ng-init="signInForm = {}">
+    <p><input type="email" placeholder="Email" ng-model="vm.signInForm.email" required></p>
+    <p><input type="password" placeholder="Password" ng-model="vm.signInForm.password" required></p>
+    <p><button type="submit">Sign in</button></p>
+  </form>
+
+  <h3>Sign Up</h3>
+  <form ng-submit="vm.signUp(signUpForm)" role="form" ng-init="signUpForm = {}">
+    <p><input type="email" placeholder="Email" ng-model="vm.signUpForm.email" required></p>
+    <p><input type="password" placeholder="Password" ng-model="vm.signUpForm.password" required></p>
+    <p><input type="password" placeholder="Confirm password" ng-model="vm.signUpForm.password_confirmation" required></p>
+    <p><button type="submit">Sign up</button></p>
+  </form>
+</div>
+
+<div ng-show="vm.getCurrentUser().signedIn">
+  <p>Current User: {{vm.getCurrentUser().email}}</p>
+  <button ng-click="vm.signOut()">Sign out</button>
+</div>
