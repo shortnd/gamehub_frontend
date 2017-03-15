@@ -22,17 +22,14 @@
     <ul class="nav nav-tabs fixed-top">
         <li class="nav-item">
             <a class="nav-link" data-ui-sref="postIndex">Home</a>
-        </li>
-        <li>{{vm.getCurrentUser().email}}</li>
-        <li>
             <!-- <a class="nav-link" data-ui-sref="postNew">New Post</a> -->
         </li>
-        <!-- <div ng-hide="vm.getCurrentUser().signedIn"> -->
+        <div ng-hide="vm.getCurrentUser().signedIn">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign-In</a>
             <div class="dropdown-menu">
 
-              <div data-ng-hide="vm.getCurrentUser().signedIn">
+              <!-- <div data-ng-hide="vm.getCurrentUser().signedIn">
                 <form ng-submit="vm.signIn(signInForm)" role="form" ng-init="signInForm = {}">
                   <p><input type="email" placeholder="Email" ng-model="vm.signInForm.email" required></p>
                   <p><input type="password" placeholder="Password" ng-model="vm.signInForm.password" required></p>
@@ -40,14 +37,14 @@
                 </form>
               </div>
 
-                <div  data-ng-show="vm.getCurrentUser().signedIn">
+                <div clas="dropdown-item" data-ng-show="vm.getCurrentUser().signedIn">
                   <p>Current User: {{vm.getCurrentUser().email}}</p>
                   <button ng-click="vm.signOut()">Sign out</button>
                 </div>
-              </div>
+              </div> -->
 
 
-                <!-- <form ng-submit="vm.signIn(signInForm)" role="form" ng-init="signInForm = {}">
+                <form ng-submit="vm.signIn(signInForm)" role="form" ng-init="signInForm = {}">
                     <div class="form-group">
                         <label class="dropdown-item" for="userEmail">Email:<input type="email" id="userEmail" placeholder="Email" data-ng-model="vm.signInForm.email" required></label>
                         <label class="dropdown-item" for="passWord">Password:<input type="password" id="passWord" placeholder="Password" data-ng-model="vm.signInForm.password"></label>
@@ -55,11 +52,11 @@
                             <button type="submit">Sign In</button>
                         </div>
                     </div>
-                </form> -->
-                <!-- <div class="dropdown-divider"></div>
+                </form>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Forgot Username</a>
-                <a class="dropdown-item" href="#">Forgot Password</a> -->
-            <!-- </div> -->
+                <a class="dropdown-item" href="#">Forgot Password</a>
+            </div>
         </li>
         </div>
         <div ng-show="vm.getCurrentUser().signedIn">
@@ -72,27 +69,6 @@
             <h1>Gamerhub</h1>
         </header>
         <main data-ui-view class="clearfix">
-          <div ng-hide="vm.getCurrentUser().signedIn">
-            <h3>Sign In</h3>
-            <form ng-submit="vm.signIn(signInForm)" role="form" ng-init="signInForm = {}">
-              <p><input type="email" placeholder="Email" ng-model="vm.signInForm.email" required></p>
-              <p><input type="password" placeholder="Password" ng-model="vm.signInForm.password" required></p>
-              <p><button type="submit">Sign in</button></p>
-            </form>
-
-            <h3>Sign Up</h3>
-            <form ng-submit="vm.signUp(signUpForm)" role="form" ng-init="signUpForm = {}">
-              <p><input type="email" placeholder="Email" ng-model="vm.signUpForm.email" required></p>
-              <p><input type="password" placeholder="Password" ng-model="vm.signUpForm.password" required></p>
-              <p><input type="password" placeholder="Confirm password" ng-model="vm.signUpForm.password_confirmation" required></p>
-              <p><button type="submit">Sign up</button></p>
-            </form>
-          </div>
-
-          <div ng-show="vm.getCurrentUser().signedIn">
-            <p>Current User: {{vm.getCurrentUser().email}}</p>
-            <button ng-click="vm.signOut()">Sign out</button>
-          </div>
             <div class="container center">
                 <div class="card" style="width: 100%;">
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
@@ -112,7 +88,39 @@
                     <div class="card-block">
                         <h4 class="card-title">Welcome to Gamerhub</h4>
                         <p class="card-text">Gamerhub is a social media site for ONLY gamers. Its just like facebook but just for gamers. You can post anything gaming related and talk to other people who also enjoy gaming</p>
-                        <form>
+
+                        <div ng-hide="vm.getCurrentUser().signedIn">
+                          <h3>Sign In</h3>
+                          <form ng-submit="vm.signIn(signInForm)" role="form" ng-init="signInForm = {}">
+                            <p><input type="email" placeholder="Email" ng-model="vm.signInForm.email" required></p>
+                            <p><input type="password" placeholder="Password" ng-model="vm.signInForm.password" required></p>
+                            <p><button type="submit">Sign in</button></p>
+                          </form>
+
+                          <h3>Sign Up</h3>
+                          <form ng-submit="vm.signUp(signUpForm)" role="form" ng-init="signUpForm = {}">
+                            <p><input type="email" placeholder="Email" ng-model="vm.signUpForm.email" required></p>
+                            <p><input type="password" placeholder="Password" ng-model="vm.signUpForm.password" required></p>
+                            <p><input type="password" placeholder="Confirm password" ng-model="vm.signUpForm.password_confirmation" required></p>
+                            <p><button type="submit">Sign up</button></p>
+                          </form>
+                        </div>
+
+                        <div ng-show="vm.getCurrentUser().signedIn">
+                          <p>Current User: {{vm.getCurrentUser().email}}</p>
+                          <button ng-click="vm.signOut()">Sign out</button>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+                        <!-- <form>
                             <div class="form-group">
                                 <label for="inputUsername">Username</label>
                                 <input type="text" id="inputUsername" class="form-control" placeholder="Username" required readonly>
@@ -127,7 +135,7 @@
                                 <input type="password" class="form-control" id="inputPassword" required readonly>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
                 <p class="showbtn"><a class="btn btn-primary" data-ui-sref="postIndex">Show Posts</a></p>
