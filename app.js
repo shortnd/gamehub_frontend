@@ -23,6 +23,10 @@ angular
         "$resource",
         PostFactoryFunction
     ])
+    .factory("AuthFactory", function ($resource) {
+      return $resource("http://localhost:3000/users/:id", {}, {
+      })
+    }
     .factory("CommentFactory", function($resource) {
         return $resource("http://localhost:3000/posts/:post_id/comments/:id", {}, {
             update: {
@@ -161,10 +165,10 @@ function AuthControllerFunction($auth) {
   }
 }
 
-function UserFactoryFunction($resource) {
-  return $resource("http://localhost:3000/users/:id", {}, {
-  })
-}
+// function UserFactoryFunction($resource) {
+//   return $resource("http://localhost:3000/users/:id", {}, {
+//   })
+// }
 
 function PostFactoryFunction($resource) {
     return $resource("http://localhost:3000/posts/:id", {}, {
