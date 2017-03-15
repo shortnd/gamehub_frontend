@@ -14,7 +14,7 @@ angular
         PostFactoryFunction
     ])
     .factory("CommentFactory", function($resource) {
-        return $resource("https://gamehub-rails-api.herokuapp.com/posts/:post_id/comments/:id", {}, {
+        return $resource("http://localhost:3000/posts/:post_id/comments/:id", {}, {
             update: {
                 method: "PUT"
             }
@@ -96,7 +96,7 @@ function RouterFunction($stateProvider) {
 }
 
 function PostFactoryFunction($resource) {
-    return $resource("https://gamehub-rails-api.herokuapp.com/posts/:id", {}, {
+    return $resource("http://localhost:3000/posts/:id", {}, {
         update: {
             method: "PUT"
         }
