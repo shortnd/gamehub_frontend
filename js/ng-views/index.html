@@ -5,7 +5,7 @@
 
 
 <div class="container">
-    <a class="btn btn-primary" data-ui-sref="postNew">New Post</a>
+    <a class="btn btn-primary float-right" data-ui-sref="postNew">New Post</a> <span><label for="searchBar">Search: <input class="form-control" id="searchBar" type="text" ng-model="searchText"></label></span>
     <div class="row">
         <!-- <div class="col-md-3">
                 <div class="card">
@@ -21,7 +21,7 @@
 
         <div class="col-md">
 
-            <div class="card" data-ng-repeat="post in vm.posts">
+            <div class="card" data-ng-repeat="post in vm.posts | filter: searchText">
                 <div class="card-header">
                     User Name
                     <ul style="list-style: none; background: #F7F7F9;" class="float-right">
