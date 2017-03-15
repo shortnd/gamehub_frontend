@@ -118,10 +118,10 @@ function RouterFunction($stateProvider) {
           controllerAs: "vm"
         })
         .state("userIndex", {
-    url: "/users",
-    templateUrl: "js/ng-views/users/users.html",
-    controller: "UserIndexController",
-    controllerAs: "vm"
+          url: "/users",
+          templateUrl: "js/ng-views/users/users.html",
+          controller: "UserIndexController",
+          controllerAs: "vm"
   })
 }
 
