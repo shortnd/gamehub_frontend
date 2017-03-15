@@ -5,6 +5,10 @@
     <div class="card-block">
         <form>
             <div class="form-group" data-ng-controller="PostNewController">
+                <label>Title:</label>
+                <br>
+                <input class="form-control" data-ng-model="vm.post.title">
+                <br>
                 <label>Content:</label>
                 <textarea class="form-control" rows="3" data-ng-model="vm.post.content"></textarea>
                 <button class="btn btn-primary float-right" style="margin: 8px 0;" type="button" data-ng-click="vm.create()">Submit</button>

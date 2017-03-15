@@ -5,6 +5,10 @@
     <div class="card-block">
         <form>
             <div class="form-group">
+                <label>Title:</label>
+                <br>
+                <input type="text" class="form-control" data-ng-model="vm.post.title">
+                <br>
                 <label>Content:</label>
                 <textarea class="form-control" rows="3" data-ng-model="vm.post.content"></textarea>
                 <button class="btn btn-primary float-right" style="margin: 4px 4px;" type="button" data-ng-click="vm.update({id: post.id})">Update</button>
@@ -13,12 +17,3 @@
         </form>
     </div>
 </div>
-
-
-<!-- <form>
-  <div class="form-group">
-    <label>Content:<textarea data-ng-model="vm.post.content"></textarea></label>
-  </div>
-  <button type="button" data-ng-click="vm.update()">Update</button>
-  <button type="button" data-ng-click="vm.destroy()">Delete</button>
-</form> -->
