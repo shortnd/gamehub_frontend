@@ -26,7 +26,7 @@ angular
     .factory("AuthFactory", function ($resource) {
       return $resource("http://localhost:3000/users/:id", {}, {
       })
-    }
+    })
     .factory("CommentFactory", function($resource) {
         return $resource("http://localhost:3000/posts/:post_id/comments/:id", {}, {
             update: {
