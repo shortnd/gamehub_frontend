@@ -11,14 +11,13 @@
                         <li class="dropdown" style="background: #F7F7F9;">
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" data-ui-sref="postShow({id: post.id})"> Show </a>
                                 <a class="dropdown-item" data-ui-sref="postEdit({id: post.id})"> Edit </a>
                             </div>
                         </li>
                     </ul>
                 </div>
                 <div class="card-block">
-                    <h4 class="card-title">{{post.title}}</h4>
+                    <h4 class="card-title"><a data-ui-sref="postShow({id: post.id})">{{post.title}}</a></h4>
                     <p class="card-text">{{post.content}}</p>
                 </div>
             </div>
