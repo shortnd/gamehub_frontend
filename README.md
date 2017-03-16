@@ -1,4 +1,4 @@
-# Gamehub | Social networking for gamers
+# Gamehub | social networking for gamers
 
 (This is the front end repo. The back end repo can be found [here](https://github.com/ngcarter/gamehub_backend). The readmes are identical, though, so there is no need to read both unless you really like our writing.)
 
