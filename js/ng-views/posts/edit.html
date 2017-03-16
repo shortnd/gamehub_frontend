@@ -13,7 +13,7 @@
                 <textarea class="form-control" rows="3" data-ng-model="vm.post.content"></textarea>
                 <label>Image Url:</label>
                 <br>
-                <input class="form-control" data-ng-model="vm.post.img_url">
+                <input class="form-control" data-ng-model={{vm.post.img_url}}>
                 <button class="btn btn-primary float-right" style="margin: 8px;" type="button" data-ng-click="vm.update({id: post.id})">Update</button>
                 <a class="btn btn-warning float-right" style="margin: 8px;" data-ui-sref="postIndex">Cancel</a>
                 <button class="btn btn-danger float-right" style="margin: 8px;" type="button" data-ng-click="vm.destroy({id: post.id})">Delete</button>
