@@ -37,11 +37,12 @@
             </div>
         </li>
     </ul>
-  </body>
     <div class="container">
+      <main data-ng-view></main>
         <header>
             <h1>Gamerhub</h1>
         </header>
+        <main data-ui-view class="clearfix">
         <div class="container center">
             <div class="card" style="width: 100%;">
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
@@ -80,6 +81,8 @@
             </div>
             <p class="showbtn"><a class="btn btn-primary" data-ui-sref="postIndex" style="margin-bottom: 15px;">Show Posts</a></p>
         </div>
+      </main>
+      </div>
         <footer class="bg-inverse fixed-bottom footer text-white">
             Created by Students at GA
         </footer>
